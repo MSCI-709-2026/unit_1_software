@@ -1,0 +1,182 @@
+---
+title: "1.2: Quarto"
+format: html
+---
+
+### Unit 1: Getting Started
+
+#### Lesson 2: Introduction to Quarto
+
+------------------------------------------------------------------------
+
+### What is Quarto?
+
+Quarto allows you to create documents that serve as an organized record of your analysis. In the world of reproducible research, we want other researchers to easily understand what we did in our analysis, and potentially validate or extend this work. You might choose to create a Quarto document as an appendix to a paper or project assignment that you are doing, upload it to an online repository such as Github, or simply to keep as a personal record so you can quickly look back at your code and see what you did. Quarto presents your code alongside its output (graphs, tables, etc.) with conventional text to explain it, a bit like a notebook.
+
+Quarto uses Markdown syntax. Markdown is a very simple ‘markup’ language which provides methods for creating documents with headers, images, links etc. from plain text files, while keeping the original plain text file easy to read. You can convert Markdown documents to many other file types like .html or .pdf to display the headers, images etc..
+
+Quarto is a successor to RMarkdown, and is language agnostic. That means you can use it to include chunks of R code, or Python, etc.
+
+### Create a Quarto file
+
+To create a Quarto file, open Positron, open the workspace for this project (if it has already been created), and in the toolbar at the top of the screen, go to `File -> New File... -> Quarto Document`. From there Positron will open a tab with a fresh, new Quarto Document.
+
+You can test the .qmd file by rendering it to .html. To render your .qmd file into a .html document, you should press the `...` dropdown menu in the upper right corner of you .qmd pane, then click the Preview button:
+
+![](doc/quarto_render.png)
+
+This will prompt you to save your file if you haven't done so. Then when the .qmd is rendered, Positron opens a preview of your rendered .qmd file in the Viewer pane in RStudio (on the right, by default). When the preview appears, an .html file is also saved to the same folder where you saved your .qmd file.
+
+Note: rendering may require the installation of additional packages, depending on the content of your .qmd file. If so, a window will pop up warning you of this requirement, and you can agree to install these as well.
+
+### The basics
+
+`.qmd` files contain three important types of content:
+
+1.  An (optional) **YAML header** surrounded by `---`s.
+2.  **Chunks** of code surrounded by ```` ``` ````.
+3.  Text mixed with simple text formatting like `# heading` and `_italics_`.
+
+There are special characters you can use or parameters you can set to customize each of these three types of content. We'll learn a few of the basics here so that you can create `.qmd` files to turn in for your homework in this class.
+
+### The YAML header
+
+At the top of any Quarto document is a YAML header section enclosed by `---`. You can control many “whole document” settings by tweaking the parameters of the YAML header. YAML originally stood for "Yet Another Markup Language", but programmers can be goofballs, and now YAML officially stands for "YAML Ain't Markup Language". Don't get hung up on it. YAML is a stand alone language, similar to JSON, that is human-readable. We use the YAML header to provide a handful of key-value pairs for our `.qmd` file.
+
+By default the YAML header includes a title and the format of the file type you want to output to. Many other options are available for different functions and formatting, but we aren't going to dive deep into Quarto functionality for this class. Rules in the header section will alter the whole document.
+
+Your YAML header will look something like this at the top of your new .qmd script:
+
+```         
+---
+title: "My first Quarto doc"
+format: html
+---
+```
+
+In the YAML header example above, the `.qmd` file is set to create an .html document when it is rendered. If, for example you would prefer a .pdf output document, you can change the format parameter in your YAML header to `pdf`. Note: To render a pdf document, you need to have LaTex installed on your computer. If you haven't already, go ahead and download / install LaTex here:
+
+<https://www.latex-project.org/get/>
+
+If you want to dive deeper into YAML options, check out this section of the Quarto Practical Guide:
+
+<https://quarto-tdg.org/yaml>
+
+### Code Chunks
+
+Below the YAML header is the space where you will write your code, accompanying explanation and any outputs. Code that is included in your .qmd document should be enclosed by three backwards apostrophes \`\`\` (grave accents!). These are known as code chunks. Inside the curly brackets is a space where you designate what programming language you want to use, which is R for the sake of this class. Quarto uses the `knitr` package to execute and display the results of R code. To use Quarto with R, you should install the `rmarkdown` package, which will also install the `knitr` package as a dependency:
+
+```{r}
+#| eval: false
+install.packages("rmarkdown", dependencies=TRUE)
+```
+
+An R chunk might just contain a simple calculation:
+
+```{r}
+x = 5 * (3-1)
+print(x)
+```
+
+You can run each code chunk while you are in your `.qmd` file by clicking the `Run Cell` icon at the top of the chunk. Positron executes the code and displays the results inline with the code.
+
+An example of a more complete .qmd file might look like this:
+
+```{r echo = FALSE, comment = ""}
+#| echo: false
+cat(htmltools::includeText("doc/Qmd_Example.qmd"))
+```
+
+### Code Chunk Options
+
+Chunk output can be customised with **options**, arguments supplied to chunk header. The `knitr` package provides almost 60 options that you can use to customize your code chunks. Here we'll cover the most important chunk options that you'll use frequently. You can see the full list at <https://quarto.org/docs/reference/cells/cells-knitr.html>.
+
+The most important set of options controls if your code block is executed and what results are inserted in the finished report:
+
+-   `eval = FALSE` prevents code from being evaluated. (And obviously if the code is not run, no results will be generated). This is useful for displaying example code, or for disabling a large block of code without commenting each line.
+
+-   `include = FALSE` runs the code, but doesn't show the code or results in the final document. Use this for setup code that you don't want cluttering your report.
+
+-   `echo = FALSE` prevents code, but not the results from appearing in the finished file. Use this when writing reports aimed at people who don't want to see the underlying R code.
+
+-   `message = FALSE` or `warning = FALSE` prevents messages or warnings from appearing in the finished file.
+
+-   `results = 'hide'` hides printed output
+
+-   `fig.show = 'hide'` hides plots.
+
+-   `error = TRUE` causes the render to continue even if code returns an error. This can be useful if you need to debug exactly what is going on inside your `.qmd`. It's also useful if you're teaching R and want to deliberately include an error. The default, `error = FALSE` causes knitting to fail if there is a single error in the document.
+
+The following table summarises which types of output each option suppresses:
+
+| Option              | Run code | Show code | Output | Plots | Messages | Warnings |
+|---------------------|----------|-----------|--------|-------|----------|----------|
+| `eval = FALSE`      | \-       |           | \-     | \-    | \-       | \-       |
+| `include = FALSE`   |          | \-        | \-     | \-    | \-       | \-       |
+| `echo = FALSE`      |          | \-        |        |       |          |          |
+| `results = "hide"`  |          |           | \-     |       |          |          |
+| `fig.show = "hide"` |          |           |        | \-    |          |          |
+| `message = FALSE`   |          |           |        |       | \-       |          |
+| `warning = FALSE`   |          |           |        |       |          | \-       |
+
+### Inline code
+
+It's customary to refer to code directly inline using single grave accents so that the reader knows you are referring to a variable, command, etc. Then you can embed R code directly into the text, using single grave accents surrounding the letter `r` and the inline code. This can be very useful if you mention properties of your data in the text. When the report is knit, the results of these computations are inserted directly into the text.
+
+For example:
+
+```{r}
+teeth_lost_per_kid = c(16, 16, 5) # Evee, Hazel, Nell
+```
+
+Our important data is stored in the variable `teeth_lost_per_kid` and I can use that data to calculate the total number of times I've played tooth fairy, which is: `r sum(teeth_lost_per_kid)`. Hooray!
+
+### Embedding images and links
+
+You can embed a link by surrounding it with the less than and greater than carrots `<` and `>` like this: `<https://sc.edu>`
+
+<https://sc.edu/>
+
+You can embed images that are stored on your hard drive by using this syntax: `![optional caption text](path/to/img.png)` where the path to image is a path relative to wherever your .Rmd file is stored. For example, the line:
+
+`![](doc/PhD_coding.png)`
+
+gives you:
+
+![](doc/PhD_coding.png)
+
+And here's the comic again but with a cheeky caption included, and the size reduced by 50% using the command:
+
+`![Have we strayed too far from our animal selves?](doc/PhD_coding.png){width=50%}`
+
+![Have we strayed too far from our animal selves?](doc/PhD_coding.png){width="50%"}
+
+### Rendering to PDF
+
+Now try to render your .qmd file to a .pdf file. This can be done by changing the output line in the YAML header to `format: pdf`. If you encounter issues rendering, make sure that you have LaTex properly installed on your computer. If you are on a Mac, make sure you also have XCode Command Line Tools installed. Additional information and troubleshooting for rendering to PDF can be found here:
+
+<https://quarto.org/docs/output-formats/pdf-engine.html>
+
+<https://yihui.org/tinytex/r/#debugging>
+
+### More with Quarto
+
+The best way to learn the formatting for Quarto is simply to practice. It will take a few days, but soon the format will become second nature, and you won't need to think about it. Here is a handy Quarto cheatsheet made by Posit: <https://quarto.org/docs/output-formats/pdf-engine.html> 
+
+![](doc/quarto.pdf)
+
+There is SO much more that you can do when building Quarto files, including formatting tables, embedding citations, automating report generation etc. People use Quarto to write textbooks, such as Hadley Wickham's textbook suggested for this class: <https://r4ds.hadley.nz/>. You can view the source code behind the book on Hadley's GitHub page to see all of the `.qmd` files used to build the book: <https://github.com/hadley/r4ds/tree/main>. People also use Quarto to write theses and dissertations, reports, and so on. There are resources listed below that can help you learn some of the extended functionality. However, for this course, the basic commands for text formatting, inserting code and output and rendering .html or .pdf documents is sufficient.
+
+Note: I am not suggesting you should write your dissertation in Quarto. You should write your dissertation in whatever software your advisor is comfortable with (probably Microsoft Word). I scaled a huge mountain by learning LaTex and writing my first chapter of my dissertation with gorgeous embedded equations, and my advisor said "What do you expect me to do with this? Convert it to Word." We are using Quarto in this class to expose you to a popular style of programming notebook (like Jupyter) that has benefits for creating reproducible analyses and contributing to open data science.
+
+You will write your homework code and prose explanations in a .qmd file because it is a great way to combine visible code, code output and text.
+
+### Exercise 2.1
+
+Write an example Quarto file and render it into an HTML document and a PDF document.
+
+### For more information on Quarto
+
+Quarto: An open source scientific and technical publishing system <https://quarto.org/>
+
+Quarto: The Practical Guide by Mine Çetinkaya-Rundel and Charlotte Wickham <https://quarto-tdg.org/>
