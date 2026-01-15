@@ -1,6 +1,6 @@
 ---
 title: "1.1: R and Positron"
-format: pdf
+format: html
 ---
 
 ```{r}
@@ -28,15 +28,17 @@ Remember that R is the programming language we will learn in this course. Howeve
 
 When you open Positron, a window should appear in your screen that looks something like this:
 
-![](doc/positron_intro.png)
+![](doc/positron_start_session.png)
 
-When you first open Positron, there are three large panes. The lower portion of the main center pane is the `CONSOLE`, where you can directly type in the code you want to run. The output from your code is also printed directly into the console. The upper right pane shows the Positron `SESSION`, which lists all of the objects that are currently loaded; this pane can also be toggled to the `HELP` tab where you can search for and read documentation for R functions and packages. The lower right pane can be used to view `Plots` you have made. A working R session will look something like this:
+When you first open Positron, there are three large panes. The lower portion of the main center pane has the `CONSOLE` tab, where you can directly type in the code you want to run. The output from your code is also printed directly into the console. Depending on your system, and if you've run a previous session in `Positron`, you might need to start this session by clicking `Start Session` in the `CONSOLE` tab (or in the upper right hand corner) and selecting the most recent version of R installed on your computer. (Note that if you have Python on your computer, you could select Python instead to start coding in Python.) Now the other step to get started is to select a folder that represents your workspace for this coding session. Select the folder on your local hard drive (or make a new one) where you will store all of your files for Unit 1 in this class.
+
+The upper right pane shows the active Positron `SESSION`, which lists all of the objects that are currently loaded; this pane can also be toggled to the `HELP` tab where you can search for and read documentation for R functions and packages. The lower right pane can be used to view `Plots` you have made. A working R session will look something like this:
 
 ![](doc/positron_panes.png)
 
 It is easier on my eyes to use a dark screen, so the first thing I would do is go to the `Positron` menu in the upper left corner, then `Settings -> Themes -> Color Theme`. I like the default dark theme but you should use whatever is most comfortable for you.
 
-To start programming, type R code into the bottom line of the Positron `CONSOLE` pane and then hit `Enter` to run it. The code you type is called a command, because it will command your computer to do something for you. The line you type it into is called the command line. When you type a command at the prompt and hit `Enter`, your computer executes the command and shows you the results. Then Positron displays a fresh prompt for your next command.
+To start programming, type R code into the bottom line of the Positron `CONSOLE` pane and then hit `Enter` to run it. The code you type is called a command, because it will command your computer to do something for you. The line you type it into is called the command line. When you type a command at the prompt and hit `Enter`, your computer executes the command and shows you the output (e.g., results). Then Positron displays a fresh prompt for your next command.
 
 #### Hello World
 
@@ -82,7 +84,7 @@ Sometimes you'll run a command that takes FOREVER, and perhaps you realize that'
 
 ### Creating an R script
 
-When you need to write more than one or two lines of code, typing your commands into the console becomes very impractical. Instead, we will open a new R script (.R file), which is a type of text file where we can save every line of code that we write. Go to `File` -\> `New File...` -\> `R File` to get started. Now your new blank R script file will appear in the center pane above the `CONSOLE` pane. 
+When you need to write more than one or two lines of code, typing your commands into the console becomes very impractical. Instead, we will open a new R script (.R file), which is a type of text file where we can save every line of code that we write. Go to `File` -\> `New File...` -\> `R File` to get started. Now your new blank R script file will appear in the center pane above the `CONSOLE` pane.
 
 You can still type commands into the console whenever you would like to. However, you can also type your commands into the R script, and when you run the commands, the commands and output will be printed to the console. Try typing `print('Hello world')` as the first line in your R script. To run or "execute" your command, put your cursor anywhere on the line and hit `control + Enter` in Windows, `command + Enter` on a Mac or `control + Return` on a Linux machine. The cursor will automatically advance to the next line so that you can run your code line by line. If you highlight a section of code, the same run command will run all of the lines within the highlighted section. Alternatively, with your cursor on the line you want to run, or after highlighting the selection of lines you want to run, you can right-click on the script pane and select `Execute Code`. Now you can edit and save your code in the R script - that way you can look at it or re-run it later.
 
@@ -231,7 +233,7 @@ my_matrix2
 class(my_matrix2)
 ```
 
-To access an element in your matrix, use square brackets to indicate the row(s) and column(s) that you are interested in. If you leave the row or column subsetting space blank, then R will automatically return all the rows or columns in the matrix. If you only use one number to subset a 2-dimensional matrix, it will return the $n^th$ element of the matrix, by column. Subsetting a matrix this was would be considered bad programming practice because it's unnecessarily confusing.
+To access an element in your matrix, use square brackets to indicate the row(s) and column(s) that you are interested in. If you leave the row or column subsetting space blank, then R will automatically return all the rows or columns in the matrix. If you only use one number to subset a 2-dimensional matrix, it will return the $n^{th}$ element of the matrix, by column. Subsetting a matrix this way would be considered bad programming practice because it's unnecessarily confusing.
 
 ```{r}
 my_matrix1[2,1] # Get element in 2nd row, 1st column
@@ -252,7 +254,7 @@ class(my_array)  # the class or data structure is an "array"
 typeof(my_array) # the array is filled with data of the type "integer"
 ```
 
-Again, you use square brackets to access or subset elements in your multi-dimensional array. You should specify the element position(s) you want in every dimension of the array. So if you have a 3-D array, you will subset with code like this: `my_3d_array[row(s), column(s), sheet(s)]`. Technically, you can just subset with a single number and it will returns the $n^th$ element of the array first going through the columns, then rows, then sheets, but this is unnecessarily confusing. If you attempt to subset a 3-D array with 2 numbers, an error will be thrown.
+Again, you use square brackets to access or subset elements in your multi-dimensional array. You should specify the element position(s) you want in every dimension of the array. So if you have a 3-D array, you will subset with code like this: `my_3d_array[row(s), column(s), sheet(s)]`. Technically, you can just subset with a single number and it will returns the $n^{th}$ element of the array first going through the columns, then rows, then sheets, but this is unnecessarily confusing. If you attempt to subset a 3-D array with 2 numbers, an error will be thrown.
 
 ```{r}
 my_array[3,2,1] # Best practice
