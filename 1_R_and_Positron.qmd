@@ -329,7 +329,7 @@ R comes with many functions that you can use to do simple or sophisticated tasks
 ```{r}
 round(9.3452)
 mean(world_oceans$area_km2)
-round(mean(c(9.3452, 6.234, 11.983)))
+round(mean(c(9.3452, 6.234, 1.983)))
 ```
 
 Don't forget that you can easily learn about what a function does, what values it returns, and what parameters you can (or must) pass the function by using the `?` to access Positron's Help feature, i.e. `?round`. There are two types of parameters that you can pass to a function: required parameters and optional parameters. For a function to work properly (and not throw an error code) you must pass it all of the required parameters. However, often there are many optional parameters that you can pass a function if you choose. By including optional parameters, you typically override the default settings for those parameters to utilize more flexibility built into the function.
@@ -402,7 +402,7 @@ However, you get an error because R doesn't know how to add up the characters "1
 R also offers functions to change from one type to another. For example, you can turn numbers into characters with:
 
 ```{r}
-my_kids_ages = c(1,5,7)
+my_kids_ages = c(6,10,12)
 class(my_kids_ages)
 ages_as_characters = as.character(my_kids_ages)
 class(ages_as_characters)
