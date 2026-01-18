@@ -54,7 +54,7 @@ format: html
 ---
 ```
 
-In the YAML header example above, the `.qmd` file is set to create an .html document when it is rendered. If, for example you would prefer a .pdf output document, you can change the format parameter in your YAML header to `pdf`. Note: To render a pdf document, you need to have LaTex installed on your computer. If you haven't already, go ahead and download / install LaTex here:
+In the YAML header example above, the `.qmd` file is set to create an .html document when it is rendered. If, for example you would prefer a .pdf output document, you can change the format parameter in your YAML header to `pdf`, which uses LaTex (note: you must have LaTex already installed on your computer). You can download / install LaTex here:
 
 <https://www.latex-project.org/get/>
 
@@ -82,14 +82,20 @@ You can run each code chunk while you are in your `.qmd` file by clicking the `R
 
 An example of a more complete .qmd file might look like this:
 
-```{r echo = FALSE, comment = ""}
-#| echo: false
+---
+
+```{r}
+#| echo: FALSE
+#| comment: ""
+
 cat(htmltools::includeText("doc/Qmd_Example.qmd"))
 ```
 
+---
+
 ### Code Chunk Options
 
-Chunk output can be customised with **options**, arguments supplied to chunk header. The `knitr` package provides almost 60 options that you can use to customize your code chunks. Here we'll cover the most important chunk options that you'll use frequently. You can see the full list at <https://quarto.org/docs/reference/cells/cells-knitr.html>.
+Chunk output can be customised with **options**, arguments supplied at the start of your code chunk, and designated using `#|`. The `knitr` package provides almost 60 options that you can use to customize your code chunks. Here we'll cover the most important chunk options that you'll use frequently. You can see the full list at <https://quarto.org/docs/reference/cells/cells-knitr.html>.
 
 The most important set of options controls if your code block is executed and what results are inserted in the finished report:
 
@@ -137,7 +143,7 @@ You can embed a link by surrounding it with the less than and greater than carro
 
 <https://sc.edu/>
 
-You can embed images that are stored on your hard drive by using this syntax: `![optional caption text](path/to/img.png)` where the path to image is a path relative to wherever your .Rmd file is stored. For example, the line:
+You can embed images that are stored on your hard drive by using this syntax: `![optional caption text](path/to/img.png)` where the path to image is a path relative to wherever your .qmd file is stored. For example, the line:
 
 `![](doc/PhD_coding.png)`
 
@@ -147,9 +153,9 @@ gives you:
 
 And here's the comic again but with a cheeky caption included, and the size reduced by 50% using the command:
 
-`![Have we strayed too far from our animal selves?](doc/PhD_coding.png){width=50%}`
+`![Have we strayed too far from our animal selves?](doc/PhD_coding.png){width=50% fig-align="left"}`
 
-![Have we strayed too far from our animal selves?](doc/PhD_coding.png){width="50%"}
+![Have we strayed too far from our animal selves?](doc/PhD_coding.png){width="50%" fig-align="left"}
 
 ### Rendering to PDF
 
@@ -161,13 +167,13 @@ Now try to render your .qmd file to a .pdf file. This can be done by changing th
 
 ### More with Quarto
 
-The best way to learn the formatting for Quarto is simply to practice. It will take a few days, but soon the format will become second nature, and you won't need to think about it. Here is a handy Quarto cheatsheet made by Posit: <https://quarto.org/docs/output-formats/pdf-engine.html> 
+The best way to learn the formatting for Quarto is simply to practice. It will take a few days, but soon the format will become second nature, and you won't need to think about it. Here is a handy Quarto cheatsheet made by Posit. Here is the html version: <https://rstudio.github.io/cheatsheets/html/quarto.html> and here is the pdf version: <https://rstudio.github.io/cheatsheets/quarto.pdf>
 
 ![](doc/quarto.pdf)
 
 There is SO much more that you can do when building Quarto files, including formatting tables, embedding citations, automating report generation etc. People use Quarto to write textbooks, such as Hadley Wickham's textbook suggested for this class: <https://r4ds.hadley.nz/>. You can view the source code behind the book on Hadley's GitHub page to see all of the `.qmd` files used to build the book: <https://github.com/hadley/r4ds/tree/main>. People also use Quarto to write theses and dissertations, reports, and so on. There are resources listed below that can help you learn some of the extended functionality. However, for this course, the basic commands for text formatting, inserting code and output and rendering .html or .pdf documents is sufficient.
 
-Note: I am not suggesting you should write your dissertation in Quarto. You should write your dissertation in whatever software your advisor is comfortable with (probably Microsoft Word). I scaled a huge mountain by learning LaTex and writing my first chapter of my dissertation with gorgeous embedded equations, and my advisor said "What do you expect me to do with this? Convert it to Word." We are using Quarto in this class to expose you to a popular style of programming notebook (like Jupyter) that has benefits for creating reproducible analyses and contributing to open data science.
+Note: I am not suggesting you should write your dissertation in Quarto. You should write your dissertation in whatever software your advisor is comfortable with (probably Microsoft Word). I scaled a huge mountain by learning LaTex and writing my first chapter of my dissertation with gorgeous embedded equations, and my advisor said "What do you expect me to do with this? Convert it to Word." We are using Quarto in this class to expose you to a popular style of programming notebook (Jupyter is another popular option) that has benefits for creating reproducible analyses and contributing to open data science.
 
 You will write your homework code and prose explanations in a .qmd file because it is a great way to combine visible code, code output and text.
 
@@ -178,5 +184,7 @@ Write an example Quarto file and render it into an HTML document and a PDF docum
 ### For more information on Quarto
 
 Quarto: An open source scientific and technical publishing system <https://quarto.org/>
+
+Quarto tutorial: In this tutorial, you can click Positron and R at the top of the page to get a specific tutorial for Positron / R users. Then you can toggle to other IDEs / python if you want to get familiar with Quarto for those use cases: <https://quarto.org/docs/get-started/hello/rstudio.html>
 
 Quarto: The Practical Guide by Mine Çetinkaya-Rundel and Charlotte Wickham <https://quarto-tdg.org/>
