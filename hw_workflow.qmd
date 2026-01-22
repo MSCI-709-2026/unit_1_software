@@ -3,9 +3,7 @@ title: "HW_workflow"
 format: html
 ---
 
-
 ### Homework Workflow
-
 
 - Put your name, GitHub username and email in my spreadsheet: <https://docs.google.com/spreadsheets/d/1EFO8gF1wHztWD1VurFI1uLVtzLpvXta-HcD4TJUSHXQ/edit?usp=sharing>
     - this allows me to add you to our class roster
