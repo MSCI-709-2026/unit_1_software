@@ -33,7 +33,7 @@ Introductions to the major software that we will use in this class.
 
 #### Lesson 1: Introduction to R
 #### New functions: 
-print(), c(), typeof(), length(), seq(), rep(), matrix(), class(), array(), list(), data.frame(), round(), mean(), install.packages(), library(), as.character(), as.numceric(), is.na()
+print(), c(), typeof(), length(), seq(), rep(), matrix(), class(), array(), list(), data.frame(), round(), mean(), install.packages(), library(), as.character(), as.numeric(), is.na()
 
 ***
 
