@@ -380,7 +380,7 @@ Traditionally, Git uses the command line to perform actions on local Git reposit
 | `git diff` | NA | NA | See the difference between staged uncomitted changes and the most recent commit |
 | `git stash` | NA | NA | Save uncommitted changes in a temporary version and revert to the most recent commit |
 
-#### More Information and Acknowledgements
+#### Acknowledgements
 
 Some of the material for this tutorial was adapted from the following:
 
