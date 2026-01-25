@@ -1,6 +1,8 @@
 ---
 title: "1.1: R and Positron"
-format: html
+format:
+  html:
+    embed-resources: true
 ---
 
 ```{r}

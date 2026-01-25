@@ -1,6 +1,8 @@
 ---
 title: "1.2: Quarto"
-format: html
+format:
+  html:
+    embed-resources: true
 ---
 
 ### Unit 1: Getting Started
@@ -23,7 +25,7 @@ To create a Quarto file, open Positron, open the workspace for this project (if 
 
 You can test the .qmd file by rendering it to .html. To render your .qmd file into a .html document, you should press the `...` dropdown menu in the upper right corner of you .qmd pane, then click the Preview button:
 
-![](doc/quarto_render.png)
+![](doc/quarto_render.png){width=75%}
 
 This will prompt you to save your file if you haven't done so. Then when the .qmd is rendered, Positron opens a preview of your rendered .qmd file in the Viewer pane in RStudio (on the right, by default). When the preview appears, an .html file is also saved to the same folder where you saved your .qmd file.
 
@@ -54,7 +56,18 @@ format: html
 ---
 ```
 
-In the YAML header example above, the `.qmd` file is set to create an .html document when it is rendered. If, for example you would prefer a .pdf output document, you can change the format parameter in your YAML header to `pdf`, which uses LaTex (note: you must have LaTex already installed on your computer). You can download / install LaTex here:
+In the YAML header example above, the `.qmd` file is set to create an .html document when it is rendered. The default is for Quarto to create a subdirectory named `_files` to contain the images, javascript, etc. that make the .html file pretty. If, like me, you'd rather not deal with this bundle of files, you can set an extra flag to ask Quarto to create self-contained .html files like this:
+
+```         
+---
+title: "My first Quarto doc"
+format:
+  html:
+    embed-resources: true
+---
+```
+
+If you would prefer a .pdf output document, you can change the format parameter in your YAML header to `pdf`, which uses LaTex (note: you must have LaTex already installed on your computer). You can download / install LaTex here:
 
 <https://www.latex-project.org/get/>
 

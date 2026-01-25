@@ -1,6 +1,8 @@
 ---
 title: "1.3: Git and GitHub"
-format: html
+format:
+  html:
+    embed-resources: true
 ---
 
 ```{r}
